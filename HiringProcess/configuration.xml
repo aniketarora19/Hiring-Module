@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<HiringModule>
+<TestEnvironments>
+<TestEnvironment id = "1">	
+	<AdminId>ANIKET</AdminId>
+	<AdminPassword>test@123</AdminPassword>
+	<HRId>tarsriva</HRId>
+	<HRPassword>test@123</HRPassword>
+	<URL>https://hris-steria-trn.oracleoutsourcing.com/psp/DSERAJ/signon.html</URL>
+</TestEnvironment>
+<TestEnvironment id = "2">	
+	<AdminId>ANIKET</AdminId>
+	<AdminPassword></AdminPassword>
+	<HRId>tarsriva</HRId>
+	<HRPassword>test@123</HRPassword>
+	<URL>https://soprasteria-uat.opc.oracleoutsourcing.com/SERAHTST/signon.html</URL>
+</TestEnvironment>
+<TestEnvironment id = "3">	
+	<AdminId></AdminId>
+	<AdminPassword></AdminPassword>
+	<HRId>tarsriva</HRId>
+	<HRPassword>test@123</HRPassword>
+	<URL>https://hris-steria-trn.oracleoutsourcing.com/psp/DSERAJ/signon.html</URL>
+</TestEnvironment>
+</TestEnvironments>
+<Navigations>
+	<Navigation name = "QueryManager">
+	Main Menu > Reporting Tools > Query > Query Manager
+	</Navigation>	
+	<Navigation name = "AddAPerson">
+	Main Menu > Workforce Administration > Job Information > Job Data
+	</Navigation>
+	<Navigation name = "TemplateBasedHire">
+	Main Menu > Workforce Administration > Template-Based Hire > Template-Based Hire
+	</Navigation>
+	<Navigation name = "PMD">
+	Main Menu > Position Management - PMD > Position Management - PMD
+	</Navigation>
+</Navigations>
+<Query>
+	<IND></IND>
+</Query>
+</HiringModule>
