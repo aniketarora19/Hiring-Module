@@ -102,14 +102,14 @@ public class UtilityClass{
         org.w3c.dom.Document doc = builder.parse(fileName);
         return doc;
     }
-	private static List<String> evaluateXPath(org.w3c.dom.Document document, String xpathExpression) throws Exception
+	private static HashMap<String,String> evaluateXPath(org.w3c.dom.Document document, String xpathExpression) throws Exception
     {
         // Create XPathFactory object
         XPathFactory xpathFactory = XPathFactory.newInstance();
          
         // Create XPath object
         XPath xpath = xpathFactory.newXPath();
-        List<String> values = new ArrayList<String>();
+        HashMap<String,String> SearchValue = new HashMap<String,String>();
         try 
         {
             // Create XPathExpression object
@@ -119,13 +119,13 @@ public class UtilityClass{
             NodeList nodes = (NodeList) expr.evaluate(document, XPathConstants.NODESET);
              
             for (int i = 0; i < nodes.getLength(); i++) {
-              values.add(nodes.item(i).getNodeValue());
+            	SearchValue.put((nodes.item(i).getNodeValue()),(nodes.item(i).getAttributes().toString()));
             }
                  
         } catch (XPathExpressionException e) {
             e.printStackTrace();
         }
-        return values;
+        return SearchValue;
     }
 	public static void main(String[] args) throws Exception {
 		System.setProperty("webdriver.chrome.driver","d:\\Profiles\\aniarora\\Desktop\\Test Automation\\chromedriver_win32\\chromedriver.exe");                  
@@ -135,13 +135,14 @@ public class UtilityClass{
 	    login("ANIKET", "test@123", driver);
 	    org.w3c.dom.Document document = getDocument("D:\\Profiles\\aniarora\\eclipse-workspace\\HiringProcess\\configuration.xml");
 	    String xpathExpression = "/HiringModule/TestEnvironments/TestEnvironment/@id";
-        List<String> abc = evaluateXPath(document, xpathExpression);
+        HashMap<String, String> abc = evaluateXPath(document, xpathExpression);
         
-        String xpathExpression1 = "/HiringModule/Navigations/QueryManager/text()";
-        List<String> Navigation = evaluateXPath(document, xpathExpression1);
-        ListIterator<String> litr = abc.listIterator();
-        ListIterator<String> litr1 = Navigation.listIterator();
-        while(litr.hasNext())
+        String xpathExpression1 = "/HiringModule/Navigations/Navigation/text()";
+        HashMap<String, String> Navigation = evaluateXPath(document, xpathExpression1);
+       String path =  Navigation.get("QueryManager");
+       System.out.println(Navigation);
+       System.out.println(path);
+       /* while(litr.hasNext())
         {
         System.out.println(litr.next());
         }
@@ -149,7 +150,8 @@ public class UtilityClass{
         {
         System.out.println(litr1.next());
         }
-       String[] a =  Navigation.get(0).split(" > ");
+        */
+       String[] a =  path.split(" > ");
 	  /* File inputFile = new File("NavigationTest.xml");
        SAXBuilder saxBuilder = new SAXBuilder();
        Document document = saxBuilder.build(inputFile);
